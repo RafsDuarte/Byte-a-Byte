@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Byte a Byte - Dicas de PC</title>
+</head>
+<body>
+    <h1>Dicas de PC</h1>
+
+    {% for post in posts %}
+        <article>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content|truncatewords:30 }}</p>
+        </article>
+    {% empty %}
+        <p>Nenhum post ainda.</p>
+    {% endfor %}
+</body>
+</html>
