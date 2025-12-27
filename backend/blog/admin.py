@@ -3,8 +3,9 @@ from .models import Post, Category
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'parent')
+    list_filter = ('parent',)
     prepopulated_fields = {'slug': ('name',)}
-    list_display = ('name',)
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):

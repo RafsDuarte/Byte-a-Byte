@@ -1,18 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Byte a Byte - Dicas de PC</title>
-</head>
-<body>
-    <h1>Dicas de PC</h1>
+{% extends 'blog/base.html' %}
 
-    {% for post in posts %}
-        <article>
-            <h2>{{ post.title }}</h2>
-            <p>{{ post.content|truncatewords:30 }}</p>
-        </article>
-    {% empty %}
-        <p>Nenhum post ainda.</p>
-    {% endfor %}
-</body>
-</html>
+{% block title %}{{ category.name }} | Byte a Byte{% endblock %}
+
+{% block content %}
+<h1>{{ category.name }}</h1>
+
+{% if category.parent %}
+  <p class="text-muted">
+    {{ category.parent.name }} → {{ category.name }}
+  </p>
+{% endif %}
+
+<hr>
+
+<div class="row">
+  {% for post in posts %}
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+          <a href="{% url 'post_detail' post.slug %}" class="btn btn-outline-primary btn-sm">
+            Ler mais
+          </a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>Nenhum post nesta categoria.</p>
+  {% endfor %}
+</div>
+{% endblock %}
