@@ -35,3 +35,15 @@ class Post(models.Model):
         null=True,
         related_name='posts'  # acessa posts via categoria.posts
     )
+
+    created_at = models.DateTimeField(auto_now_add=True)  # data de criação automática
+    updated_at = models.DateTimeField(auto_now=True)  # atualiza a cada save
+    is_published = models.BooleanField(default=True)  # controla visibilidade do post
+
+    class Meta:
+        verbose_name = 'Post'
+        verbose_name_plural = 'Posts'
+        ordering = ['-created_at']  # mais recentes primeiro
+
+    def __str__(self):
+        return self.title

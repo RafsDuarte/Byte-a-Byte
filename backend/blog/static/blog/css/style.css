@@ -1,3 +1,214 @@
-main {
-    background-color: blue;
+/* ========================
+   VARIÁVEIS
+======================== */
+:root {
+    --primary: #0d6efd;
+    --dark: #0f1117;
+    --card-bg: #1a1d27;
+    --text-muted: #8b8fa8;
+}
+
+/* ========================
+   GLOBAL
+======================== */
+body {
+    background-color: var(--dark);
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ========================
+   NAVBAR
+======================== */
+.navbar {
+    background-color: #12151f;
+    border-bottom: 1px solid #1e2235;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--primary) !important;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: #adb5bd !important;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+}
+
+/* ========================
+   HERO
+======================== */
+.hero {
+    background: linear-gradient(135deg, #0d6efd22, #6610f222);
+    border-bottom: 1px solid #1e2235;
+    padding: 70px 0 50px;
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.hero p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* ========================
+   BADGE CATEGORIA
+======================== */
+.badge-category {
+    background-color: #0d6efd22;
+    color: var(--primary);
+    border: 1px solid #0d6efd44;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ========================
+   CARDS DE POST
+======================== */
+.post-card {
+    background-color: var(--card-bg);
+    border: 1px solid #1e2235;
+    border-radius: 12px;
+    transition: transform 0.2s, border-color 0.2s;
+    overflow: hidden;
+    height: 100%;
+}
+
+.post-card:hover {
+    transform: translateY(-4px);
+    border-color: #0d6efd55;
+}
+
+.post-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.post-card .card-body {
+    padding: 1.2rem;
+}
+
+.post-card .card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.post-card .card-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.post-card .card-footer {
+    background: transparent;
+    border-top: 1px solid #1e2235;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* ========================
+   LINK LER MAIS
+======================== */
+.read-more {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* ========================
+   POST DESTAQUE
+======================== */
+.post-destaque {
+    background-color: var(--card-bg);
+    border: 1px solid #1e2235;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.post-destaque img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+/* ========================
+   SIDEBAR
+======================== */
+.sidebar-card {
+    background-color: var(--card-bg);
+    border: 1px solid #1e2235;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-card h6 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #1e2235;
+    font-size: 0.88rem;
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.category-item:last-child {
+    border-bottom: none;
+}
+
+.category-item:hover {
+    color: var(--primary);
+}
+
+.category-count {
+    background: #0d6efd22;
+    color: var(--primary);
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+}
+
+/* ========================
+   FOOTER
+======================== */
+footer {
+    background-color: #12151f;
+    border-top: 1px solid #1e2235;
+    padding: 2rem 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
 }

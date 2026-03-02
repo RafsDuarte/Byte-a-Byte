@@ -1,39 +1,208 @@
-{% extends 'blog/base.html' %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte a Byte</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
 
-{% block title %}Home | Byte a Byte{% endblock %}
-
-{% block content %}
-<h1 class="mb-4">Últimas Dicas de PC</h1>
-
-<div class="row">
-  {% for post in posts %}
-    <div class="col-md-6 mb-4">
-      <div class="card h-100">
-        {% if post.image %}
-          <img src="{{ post.image.url }}" class="card-img-top">
-        {% endif %}
-
-        <div class="card-body">
-          <h5 class="card-title">{{ post.title }}</h5>
-
-          {% if post.category %}
-            <span class="badge bg-secondary">
-              {{ post.category.name }}
-            </span>
-          {% endif %}
-
-          <p class="card-text mt-2">
-            {{ post.content|truncatewords:25 }}
-          </p>
-
-          <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary btn-sm">
-            Ler mais
-          </a>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">⚡ Byte a Byte</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Hardware</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Guias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+                </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control form-control-sm bg-dark border-secondary text-white" type="search" placeholder="Buscar...">
+                </form>
+            </div>
         </div>
-      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <span class="badge-category mb-3 d-inline-block">Hardware & Tecnologia</span>
+            <h1>Aprenda tudo sobre <br><span style="color: var(--primary);">peças de computador</span></h1>
+            <p class="mt-3">Dicas, guias e análises para montar, entender e otimizar seu PC.</p>
+        </div>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="container my-5">
+        <div class="row g-4">
+
+            <!-- POSTS -->
+            <div class="col-lg-8">
+
+                <!-- Post destaque -->
+                <div class="post-destaque mb-4">
+                    <img src="https://placehold.co/800x320/1a1d27/0d6efd?text=Post+Destaque" alt="Post destaque">
+                    <div class="p-4">
+                        <span class="badge-category">Processadores</span>
+                        <h2 class="mt-2 fw-bold" style="font-size: 1.4rem;">Como escolher um Processador (CPU) para seu PC</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">O processador é o cérebro do computador. Saiba como escolher o melhor para o seu uso e orçamento.</p>
+                        <div class="d-flex align-items-center gap-3 mt-3">
+                            <small style="color: var(--text-muted);"><i class="bi bi-calendar3"></i> 01 Mar 2026</small>
+                            <a href="#" class="read-more">Ler mais <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid de posts -->
+                <h5 class="fw-bold mb-3" style="color: #fff;">Últimos Posts</h5>
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <div class="post-card">
+                            <img src="https://placehold.co/400x180/1a1d27/0d6efd?text=GPU" alt="GPU">
+                            <div class="card-body">
+                                <span class="badge-category">Placas de Vídeo</span>
+                                <h5 class="card-title mt-2">RTX 4060 vs RX 7600 — Qual vale mais?</h5>
+                                <p class="card-text">Comparativo completo entre as duas GPUs mais vendidas na faixa intermediária.</p>
+                                <a href="#" class="read-more">Ler mais <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <span><i class="bi bi-calendar3"></i> 28 Fev 2026</span>
+                                <span><i class="bi bi-clock"></i> 5 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="post-card">
+                            <img src="https://placehold.co/400x180/1a1d27/6610f2?text=RAM" alt="RAM">
+                            <div class="card-body">
+                                <span class="badge-category">Memória RAM</span>
+                                <h5 class="card-title mt-2">DDR4 vs DDR5 — Ainda vale migrar?</h5>
+                                <p class="card-text">Entenda as diferenças reais de desempenho e quando a migração faz sentido.</p>
+                                <a href="#" class="read-more">Ler mais <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <span><i class="bi bi-calendar3"></i> 25 Fev 2026</span>
+                                <span><i class="bi bi-clock"></i> 4 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="post-card">
+                            <img src="https://placehold.co/400x180/1a1d27/198754?text=SSD" alt="SSD">
+                            <div class="card-body">
+                                <span class="badge-category">Armazenamento</span>
+                                <h5 class="card-title mt-2">SSD NVMe vs SATA — Qual a diferença?</h5>
+                                <p class="card-text">Descubra qual tipo de SSD faz mais sentido para o seu uso no dia a dia.</p>
+                                <a href="#" class="read-more">Ler mais <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <span><i class="bi bi-calendar3"></i> 20 Fev 2026</span>
+                                <span><i class="bi bi-clock"></i> 3 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="post-card">
+                            <img src="https://placehold.co/400x180/1a1d27/dc3545?text=Fonte" alt="Fonte">
+                            <div class="card-body">
+                                <span class="badge-category">Fonte de Alimentação</span>
+                                <h5 class="card-title mt-2">Como calcular a fonte ideal para seu PC</h5>
+                                <p class="card-text">Aprenda a calcular o consumo do seu PC e escolher a fonte certa sem gastar à toa.</p>
+                                <a href="#" class="read-more">Ler mais <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <span><i class="bi bi-calendar3"></i> 15 Fev 2026</span>
+                                <span><i class="bi bi-clock"></i> 6 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="col-lg-4">
+
+                <div class="sidebar-card">
+                    <h6><i class="bi bi-grid"></i> Categorias</h6>
+                    <a href="#" class="category-item">
+                        <span>⚡ Processadores</span>
+                        <span class="category-count">8</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span>🎮 Placas de Vídeo</span>
+                        <span class="category-count">6</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span>💾 Memória RAM</span>
+                        <span class="category-count">4</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span>💿 Armazenamento</span>
+                        <span class="category-count">5</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span>🔌 Fonte de Alimentação</span>
+                        <span class="category-count">3</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span>❄️ Refrigeração</span>
+                        <span class="category-count">4</span>
+                    </a>
+                </div>
+
+                <div class="sidebar-card">
+                    <h6><i class="bi bi-fire"></i> Posts Populares</h6>
+                    <div class="d-flex flex-column gap-3">
+                        <a href="#" style="text-decoration: none; color: #ccc; font-size: 0.88rem;" class="d-flex gap-2 align-items-start">
+                            <span style="color: var(--primary); font-weight: 800;">01</span>
+                            Como escolher um Processador para seu PC
+                        </a>
+                        <a href="#" style="text-decoration: none; color: #ccc; font-size: 0.88rem;" class="d-flex gap-2 align-items-start">
+                            <span style="color: var(--primary); font-weight: 800;">02</span>
+                            RTX 4060 vs RX 7600 — Qual vale mais?
+                        </a>
+                        <a href="#" style="text-decoration: none; color: #ccc; font-size: 0.88rem;" class="d-flex gap-2 align-items-start">
+                            <span style="color: var(--primary); font-weight: 800;">03</span>
+                            DDR4 vs DDR5 — Ainda vale migrar?
+                        </a>
+                        <a href="#" style="text-decoration: none; color: #ccc; font-size: 0.88rem;" class="d-flex gap-2 align-items-start">
+                            <span style="color: var(--primary); font-weight: 800;">04</span>
+                            Como calcular a fonte ideal para seu PC
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h6><i class="bi bi-envelope"></i> Newsletter</h6>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Receba os melhores conteúdos sobre hardware direto no seu email.</p>
+                    <input type="email" class="form-control form-control-sm bg-dark border-secondary text-white mb-2" placeholder="seu@email.com">
+                    <button class="btn btn-primary btn-sm w-100">Inscrever</button>
+                </div>
+
+            </div>
+        </div>
     </div>
-  {% empty %}
-    <p>Nenhum post publicado ainda.</p>
-  {% endfor %}
-</div>
-{% endblock %}
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <span>⚡ <strong style="color: var(--primary);">Byte a Byte</strong> — Todos os direitos reservados</span>
+            <span class="mt-2 mt-md-0">Feito com Django + Bootstrap</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
